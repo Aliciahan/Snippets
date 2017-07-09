@@ -1,0 +1,293 @@
+snippet datetimesh "echo Date Time"
+$(date +"%Y-%m-%d %H:%M:%S")
+endsnippet
+
+snippet case "case"
+case ${1:word} in
+	${2:pattern})
+	;;
+	*)
+	;;
+esac
+endsnippet
+
+snippet elif "else if "
+elif ${2:[[ ${1:condition} ]]}; then
+	${0:#statements}'
+endsnippet
+
+
+snippet for "for..."
+for (( i = 0; i < ${1:10}; i++ )); do
+	${0:#statements}
+done
+endsnippet
+
+snippet function "function"
+function ${1:name}() {
+	${3:#statements}
+}
+endsnippet
+
+snippet if "if...fi"
+if ${2:[[ ${1:condition} ]]}; then
+	${0:#statements}
+fi
+endsnippet
+
+snippet untilDone "until...done"
+until ${2:[[ ${1:condition} ]]}; do
+	${0:#statements}
+done
+endsnippet
+
+snippet while "while...done"
+while ${2:[[ ${1:condition} ]]}; do
+	${0:#statements}
+done
+endsnippet
+
+snippet stdToNull "Stdout to Null"
+>/dev/null
+endsnippet
+
+snippet stderrToNull "StdErr output to null"
+2>/dev/null
+endsnippet
+
+snippet checkExitCode "Check Previous Exit Code"
+EXCODE=$?
+if [ "$EXCODE" == "0" ]; then
+	echo "O.K"
+fi
+endsnippet
+
+snippet stdOutErrNull "Std out/Err to Null"
+>/dev/null 2>&1
+endsnippet
+
+snippet catToTee "Put Content To File"
+cat << EOF | tee ${1:>/path/to/file}
+$2
+EOF
+endsnippet
+
+snippet echoToErr "Echo to Std Error "
+echo -e "\033[31m $1\033[0m" >&2
+endsnippet
+
+snippet readFile "Read From File"
+while read -r line
+do
+	${2:echo "\$line"}
+done < ${1:/path/to/file}
+endsnippet
+
+snippet usageFunction "Function Print Help"
+usage${1:}() {
+	cat <<-EOF
+			Usage: pgihadmin ${3:tache} <CIBLE> [-f] [-q] [-h]
+			Cette tache permet de ${2:bla bla}
+			PARAMETRES:
+			===========
+					CIBLE    Serveur cible : <vide> ou all, aps, ts, lb, ord, apsN, tsN, lbN, ordN (avec N un nombre)
+
+			OPTIONS:
+			========
+					-f    Mode force
+					-q    Mode silencieux
+					-h    Affiche ce message
+
+			EXAMPLES:
+			=========
+
+EOF
+		}
+endsnippet
+
+
+snippet getopts "Get Argument"
+while getopts "a:h" arg
+do
+case $arg in
+	a)
+	$OPTARG
+	;;
+	h) ;;
+	?)
+	echo -e "\\\\033[31m Unknow argument \\\\033[0m"
+	exit 1
+	;;
+esac
+done
+
+echo 处理完参数后的 OPTIND：$OPTIND
+echo 移除已处理参数个数：$((OPTIND-1))
+shift $((OPTIND-1))
+echo 参数索引位置：$OPTIND
+echo 准备处理余下的参数：
+echo "Other Params: $*"
+endsnippet
+
+snippet menuModel "Model for TUI MENU"
+function menuconfig {
+while [[ 1 ]]; do
+	clear
+	echo
+	echo -e "\\\\t\\\\t\\\\t\\\\033[33m $1 \\\\033[0m\\\\n"
+	echo -e "\\\\t 1. $2 \\\\n"
+	echo -e "\\\\t 2. $3\\\\n"
+	echo -e "\\\\t 3. $4\\\\n"
+	echo -e "\\\\t 0. Back\\\\n"
+	echo -en "\\\\t\\\\tEnter your choice:"
+	read -n 1 option
+	case ${option} in
+		1)
+		clear
+		configfile
+		;;
+		0) break ;;
+		*)
+		echo -e "\\\\n\\\\t Error INPUT"
+		;;
+	esac
+	echo -en "\\\\n\\\\tPress Any Key to Continue"
+	read -n 1 option
+done
+}
+endsnippet
+
+snippet forRange "for in Range"
+rangei=0
+rangen=
+while [[ "$rangei" -lt $rangen ]]; do
+echo -en "\\\\033[36m $(expr $rangei + 1) \\\\033[0m"
+rangei=$(expr $rangei + 1)
+done
+$0
+endsnippet
+
+snippet forIn "For ... in ..."
+for var in ${1:sth here};do
+${2:Statement}
+done
+endsnippet
+
+snippet funcOptionCase "Function Option Case"
+function ${1:Name}() {
+while getopts "h" arg
+do
+	case $arg in
+		# a)
+		# $OPTARG
+		# ;;
+		h)
+		usageRun
+		exit 0
+		;;
+		?)
+		echo -e "\\\\033[31m Unknow argument \\\\033[0m"
+		exit 1
+		;;
+	esac
+done
+
+shift $((OPTIND-1))
+
+case $1 in
+	aaaa)
+	shift 1
+	ccRunServices "$@"
+	;;
+	"")
+	exit 0
+	;;
+	*)
+	echo -e "\\\\033[31m Error \\\\033[0m No Such Option" 1>&2
+	exit 1
+	;;
+esac
+}
+endsnippet
+
+snippet listChoices "Print Ls"
+rangei=1
+for var in $(ls ./InstanceModels/ -l |  awk \'NR>1\' | awk \'{print $(NF)}\');do
+echo -e \"\\\\033[33m $rangei  --- \\\\033[0m ${var}\"
+rangei=$(expr $rangei + 1)
+done
+endsnippet
+
+snipept awkNR "list from the 2nd line"
+awk 'NR>1'
+endsnippet
+
+snippet awkNF "get the -2 colone"
+awk '{print $(NF-1)}'
+endsnippet
+
+snippet awkExcluLast "get all except last col"
+'awk -F/ '{for(i=1;i<NF;i++)printf("%s/",$i)}\''
+endsnippet
+
+snippet pressToContinue "Press To Continue"
+echo -en "\n\tPress Any Key to Continue"
+read -n 1 option
+endsnippet
+
+snippet echoGreen "Char in Green"
+echo -e "\033[32m $1 \033[0m"$0
+endsnippet
+
+snippet echoRed "Char in Red"
+echo -e "\033[31m $1 \033[0m"$0'
+endsnippet
+
+snippet echoYellow "Char in Yellow"
+echo -e "\033[33m $1\033[0m"$0
+endsnippet
+
+
+snippet colRed "Col Red"
+\033[31m
+endsnippet
+
+snippet colGreen "Col Green"
+\033[32m
+endsnippet
+
+snippet colYellow "col yellow"
+\033[33m
+endsnippet
+
+snippet colBlue "col blue"
+\033[34m
+endsnippet
+
+snippet colRose "col Rose"
+\033[35m
+endsnippet
+
+snippet colCyan "col Cyan"
+\033[36m
+endsnippet
+
+snippet colGray "col Gray"
+\033[37m
+endsnippet
+
+snippet textBold "Text Blod"
+\033[1m
+endsnippet
+
+snippet textNormal "Normaliser Text"
+\033[0m
+endsnippet
+
+snippet textUnderline "Text Under Line"
+\033[4m
+endsnippet
+
+snippet echoErr "Echo Err Msg"
+echo -e "\033[31m Error Input, please Check : \033[0m" 1>&2'
+endsnippet
