@@ -1,3 +1,4 @@
-<h1 align="center">Snippets Collection For UtilSnips VIM</h1>
+<h1 align="center">Snippets Collection For UltiSnips VIM</h1>
+
 
 
