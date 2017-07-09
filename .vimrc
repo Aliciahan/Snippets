@@ -75,7 +75,7 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^
 "
 " 
 " let g:UltiSnipsSnippetsDir = '~/Dropbox/ultisnips'
-let g:UltiSnipsSnippetDirectories = ['ultisnips']
+let g:UltiSnipsSnippetDirectories = ['UltiSnips']
  
 function! g:UltiSnips_Complete()
 	call UltiSnips#ExpandSnippet()
