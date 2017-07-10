@@ -16,6 +16,7 @@ Plugin 'vim-scripts/The-NERD-tree'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'kien/ctrlp.vim'
 " 以下范例用来支持不同格式的插件安装.
 " 请将安装插件的命令放在vundle#begin和vundle#end之间.
 " Github上的插件
@@ -66,6 +67,12 @@ set clipboard=unnamed
 
 set pastetoggle=<F9>
 " Forbidden auto indent when copy
+
+" Setting for ctrlp search
+" 
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip     
+let g:ctrlp_custom_ignore = {'dir':  '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll)$'}
 
 
 "autocmd Bufenter *.txt set spell spelllang=en
