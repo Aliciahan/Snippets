@@ -61,6 +61,12 @@ noremap / :set hlsearch<cr>/
 noremap ? :set hlsearch<cr>?
 noremap * *:set hlsearch<cr>
 
+set clipboard=unnamed
+"clipboard to system clipboard for Mac OS X
+
+set pastetoggle=<F9>
+" Forbidden auto indent when copy
+
 
 "autocmd Bufenter *.txt set spell spelllang=en
 "autocmd Bufenter *.tex set spell spelllang=en
