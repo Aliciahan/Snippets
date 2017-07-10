@@ -48,6 +48,7 @@ set showcmd
 set autoindent
 set hlsearch
 set backspace=2
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 "autocmd Bufenter *.txt set spell spelllang=en
 "autocmd Bufenter *.tex set spell spelllang=en
