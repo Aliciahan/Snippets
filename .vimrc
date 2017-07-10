@@ -17,6 +17,9 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
+"For Ubuntu : Ack should have sudo apt-get install -y ack-grep | Mac : brew
+"install ack
 " 以下范例用来支持不同格式的插件安装.
 " 请将安装插件的命令放在vundle#begin和vundle#end之间.
 " Github上的插件
@@ -50,9 +53,14 @@ set autoindent
 set hlsearch
 set backspace=2
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType js setlocal ts=2 sts=2 sw=2 expandtab
 set ignorecase
 set smartcase
-
+set smartindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set softtabstop=4
 " 当光标一段时间保持不动了，就禁用高亮
 autocmd cursorhold * set nohlsearch
 " 当输入查找命令时，再启用高亮
