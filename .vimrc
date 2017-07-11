@@ -18,8 +18,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
-"For Ubuntu : Ack should have sudo apt-get install -y ack-grep | Mac : brew
-"install ack
+Plugin 'altercation/vim-colors-solarized'
 " 以下范例用来支持不同格式的插件安装.
 " 请将安装插件的命令放在vundle#begin和vundle#end之间.
 " Github上的插件
@@ -40,6 +39,8 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 
 "以下是我自己的设置
 " ---------------------------------------------------------
+set background=dark
+colorscheme molokai
 syntax enable
 set number
 au BufNewFile, BufRead *.handlebras set file type=html
