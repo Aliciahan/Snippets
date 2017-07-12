@@ -1,0 +1,265 @@
+snippet codeLine "One Line Code"
+\mint{java}|${1:code content}|'
+endsnippet
+
+snippet codeFromFile "Code read from file"
+\begin{listing}[ht]
+\inputminted{${1:language}}{${2:file name}}
+\caption{${3:caption}}
+\label{listing:$4}
+\end{listing}
+$0
+endsnippet
+
+
+snippet part "Part"
+\part{${1:part name}}$0
+endsnippet
+
+snippet chapter "Chapter"
+\chapter{${1:chapter name}}$0
+endsnippet
+
+snippet section "Section"
+\section{${1:section name}}$0
+endsnippet
+
+snippet subsection "subsection"
+\subsection{${1:subsection name}}$0
+endsnippet
+
+snippet subsubsection "subsubsection"
+\subsubsection{${1:subsubsection name}}$0
+endsnippet
+
+snippet paragraph "paragraph"
+\paragraph{${1:paragraph name}}$0
+endsnippet
+
+snippet subparagraph "subparagraph"
+\subparagraph{${1:subparagraph name}}$0
+endsnippet
+
+snippet align "align(*)"
+\begin{align}
+	$0
+\end{align}'
+endsnippet
+
+
+snippet description "description"
+\begin{description}
+	\item[$1]$0
+\end{description}
+endsnippet
+
+snippet enumerate "enumerate"
+\begin{enumerate}
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet equation "Equation"
+\begin{equation$1}
+	$0
+\end{equation$1}
+endsnippet
+
+snippet figure "Figure"
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[scale=$2]{${1:/path/to/figure}}
+		\caption{$3}
+		\label{fig:$4}
+	\end{center}
+\end{figure}
+\FloatBarrier
+endsnippet
+
+snippet refLink "Refer Link"
+\href{${1:link}}{\underline{${2:description}}}$0
+endsnippet
+
+
+snippet refUrl "Refer URL"
+\url{$1}$0
+endsnippet
+
+snippet refMail "Ref Mailto"
+\href{mailto:${1:add}}{${2:Exp}}$0
+endsnippet
+
+snippet boldword "Text Bold"
+\textbf{$1}$0
+endsnippet
+
+snippet underlineW "Word UnderLine"
+\underline{$1}$0
+endsnippet
+
+snippet italicword "Word Italic"
+\textit{$1}$0
+endsnippet
+
+snippet emphaword "Empha Word"
+\emph{$1}$0
+endsnippet
+
+
+snippet colorRedW "Red"
+\color{red}{$1}}$0
+endsnippet
+
+snippet colorWarn "Strong Red"
+\textbf{{\color{red}{$1}}}$0
+endsnippet
+
+snippet colorOrangeW "Orange"
+{\color{orange}{$1}}$0
+endsnippet
+
+snippet colorVioletW "Violet"
+{\color{violet}{$1}}$0
+endsnippet
+
+snippet colorGrayW "Gray"
+{\color{gray}{$1}}$0
+endsnippet
+
+snippet colorBrownW "Brown"
+{\color{brown}{$1}}$0
+endsnippet
+
+snippet colorLimeW "Lime"
+{\color{lime}{$1}}$0
+endsnippet
+
+snippet colorMagentaW "Megenta"
+{\color{magenta}{$1}}$0
+endsnippet
+
+snippet footnote "Footnote"
+\footnote{$1}$0
+endsnippet
+
+snippet colorScript "violet italic"
+\textit{{\color{violet}{$1}}}$0
+endsnippet
+
+snippet colorTitleBr "Brown Bold"
+\textbf{{\color{brown}{$1}}}$0
+endsnippet
+
+snippet colorEmphMag "Magenta Bold"
+\emph{{\color{magenta}{$1}}}$0
+endsnippet
+
+snippet colorDefGray "Gray Bold"
+\textbf{{\color{gray}{$1}}}$0
+endsnippet
+
+
+snippet figureDouble "horizon 2 pic"
+\begin{figure}[h]
+	\begin{minipage}[t]{0.5\linewidth}
+		\centering
+		\includegraphics[width=2.5in]{a.png}
+		\caption{a}
+		\label{fig:a}
+	\end{minipage}%
+	\begin{minipage}[t]{0.5\linewidth}
+		\centering
+		\includegraphics[width=2.5in]{b.png}
+		\caption{b}
+		\label{fig:b}
+	\end{minipage}
+\end{figure}
+\FloatBarrier
+endsnippet
+
+
+snippet gather "Gather"
+\begin{gather$1}
+	$0
+\end{gather$1}'
+endsnippet
+
+
+snippet itemize "Itemize"
+\begin{itemize}
+	\item $0
+\end{itemize}'
+endsnippet
+
+snippet table "Table"
+\begin{table}
+	\caption{$1}
+	\label{$3}
+	$2
+\end{table}
+endsnippet
+
+snippet tabular "Tabular"
+\begin{tabular}{| l | l |$0}
+	\caption{$1}
+	\label{$2}
+	\hline
+	\tabincell{l}{colA} & \tabincell{l}{colB} \\ 
+	\hline
+\end{tabular}
+\FloatBarrier
+endsnippet
+
+snippet tabularRight "tabular right"
+\begin{sidewaystable}[h]
+\begin{tabular}{| l | l |$0}
+	\hline
+	\tabincell{l}{colA} & \tabincell{l}{colB} \\
+	\hline
+\end{tabular}
+	\caption{$1}
+	\label{$2}
+\end{sidewaystable}
+\FloatBarrier
+endsnippet
+
+snippet frameMD "Frame MD"
+\begin{center}
+\begin{mdframed}[leftmargin=10pt, rightmargin = 10pt]
+	\caption{}
+	\label{}
+\end{mdframed}
+\end{center}'
+endsnippet
+
+snippet codelist "CodeList"
+\begin{listing}[ht]
+\begin{minted}[frame=lines,
+%framesep=2m,
+%baselinestretch=1.2,
+bgcolor=very-light-gray,
+fontsize=\scriptsize,%tiny
+linenos]{$1}
+$0
+\end{minted}
+\label{code:$2}
+\caption{$3}
+\end{listing}
+\FloatBarrier
+endsnippet
+
+snippet lineCode "Code No Listing"
+\begin{minted}[frame=lines,
+%framesep=2m,
+%baselinestretch=1.2,
+bgcolor=very-light-gray,
+fontsize=\scriptsize,%tiny
+%linenos
+]{$1}
+$2
+\end{minted}
+\FloatBarrier
+endsnippet
+
+
+

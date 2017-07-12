@@ -3,7 +3,6 @@
 set nocompatible              " 去除VI一致性,必须
 filetype off                  " 必须
 
-
 " 设置包括vundle和初始化相关的runtime path
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -19,6 +18,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized'
+
 " 以下范例用来支持不同格式的插件安装.
 " 请将安装插件的命令放在vundle#begin和vundle#end之间.
 " Github上的插件
@@ -45,7 +45,6 @@ syntax enable
 set number
 au BufNewFile, BufRead *.handlebras set file type=html
 set showcmd
-filetype indent on
 set wildmenu
 set showmatch
 set mouse=a
@@ -111,7 +110,6 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^
 " 
 " let g:UltiSnipsSnippetsDir = '~/Dropbox/ultisnips'
 let g:UltiSnipsSnippetDirectories = ['UltiSnips']
- 
 function! g:UltiSnips_Complete()
 	call UltiSnips#ExpandSnippet()
 	if g:ulti_expand_res == 0
@@ -172,3 +170,6 @@ let g:ycm_filetype_blacklist = {
 
 let g:tex_indent_items=0
 
+filetype plugin on
+filetype indent on 
+let g:tex_flavor='latex'
