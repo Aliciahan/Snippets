@@ -18,6 +18,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized'
+Bundle 'luochen1990/rainbow'
 
 " 以下范例用来支持不同格式的插件安装.
 " 请将安装插件的命令放在vundle#begin和vundle#end之间.
@@ -35,7 +36,6 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 " :PluginInstall    - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate
 " :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存
 " :PluginClean      - 清除未使用插件,需要确认; 追加 `!` 自动批准移除未使用插件
-
 
 "以下是我自己的设置
 " ---------------------------------------------------------
@@ -83,20 +83,21 @@ set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = {'dir':  '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll)$'}
 
 
-"autocmd Bufenter *.txt set spell spelllang=en
-"autocmd Bufenter *.tex set spell spelllang=en
-"autocmd Bufenter *.md set spell spelllang=en
+autocmd Bufenter *.txt set spell spelllang=en
+autocmd Bufenter *.tex set spell spelllang=en
+autocmd Bufenter *.md set spell spelllang=en
+autocmd Bufenter *.markdown set spell spelllang=en
 " spell checking
-"function! ToggleSpellLang()
+function! ToggleSpellLang()
 	" toggle between en and fr
-"	if &spelllang =~# 'en'
-"		:set spelllang=fr
-"	else
-"		:set spelllang=en
-"	endif
-"endfunction
-"nnoremap <F7> :setlocal spell!<CR> " toggle spell on or off
-"nnoremap <F8> :call ToggleSpellLang()<CR> " toggle language
+	if &spelllang =~# 'en'
+		:set spelllang=fr
+	else
+		:set spelllang=en
+	endif
+endfunction
+nnoremap <F7> :setlocal spell!<CR> " toggle spell on or off
+nnoremap <F8> :call ToggleSpellLang()<CR> " toggle language
 
 command Spellen set spell spelllang=en
 command Spellfr set spell spelllang=fr
@@ -167,9 +168,13 @@ let g:ycm_filetype_blacklist = {
       \   'mail': 1
       \ }
 
-
 let g:tex_indent_items=0
 
 filetype plugin on
 filetype indent on 
 let g:tex_flavor='latex'
+
+"rainbow setting
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+
+

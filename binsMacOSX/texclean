@@ -1,0 +1,97 @@
+#!/bin/bash
+function rmDefault() {
+    A=$(ls ./ | grep .tex$ | sed "s/\.tex$//g")
+    latexmk -C
+    rm ${A}".lol"
+    rm -rf "_minted-"${A}"/"
+    echo -e "\033[32m [Done] \033[0m"
+}
+
+function rmByName() {
+
+    A=$(echo "$1" | sed -e "s/\.tex[ ]*$//g" -e "s>^\./>>g")
+
+    latexmk -C
+    echo -en "\033[33m Cleaning up project auxiliary files \033[0m"
+    EXCODE=$?
+    if [ "$EXCODE" == "0" ]; then
+        echo -e "\033[32m [Done] \033[0m"
+    else
+        echo -e "\033[31m [Errors Exist] \033[0m"
+    fi
+
+    rm ${A}".lol"
+    echo -en "\033[33m Cleaning up project lol files \033[0m"
+    EXCODE=$?
+    if [ "$EXCODE" == "0" ]; then
+        echo -e "\033[32m [Done] \033[0m"
+    else
+        echo -e "\033[31m [Errors Exist] \033[0m"
+    fi
+
+    rm -rf "_minted-"${A}"/"
+    echo -en "\033[33m Cleaning up Listing Code Repository \033[0m"
+    EXCODE=$?
+    if [ "$EXCODE" == "0" ]; then
+        echo -e "\033[32m [Done] \033[0m"
+    else
+        echo -e "\033[31m [Errors Exist] \033[0m"
+    fi   #statements
+}
+
+function usage() {
+    cat <<-EOF
+
+            Usage: cleantex [-f <cible>] [-h]
+
+            Cette tache permet de Clean pdflatex compiled latex project
+
+            PARAMETRES:
+            ===========
+                    cible    Name of the tex File
+
+            OPTIONS:
+            ========
+                    -f    Mode File
+                    -h    Affiche ce message
+
+            EXAMPLES:
+            =========
+                    cleantex  
+                    cleantex -f Filename.tex
+
+EOF
+}
+
+while getopts "f:h" arg
+do
+    case $arg in
+        f)
+        rmByName $OPTARG
+        exit 0
+        ;;
+        h)
+        usage
+        exit 0
+        ;;
+        ?)
+        echo -e "\\033[31m Unknow argument \\033[0m"
+        exit 1
+        ;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+case $1 in
+    "")
+        rmDefault
+        exit 0
+    ;;
+    *)
+    echo -e "\\033[31m Error \\033[0m No Such Option" 1>&2
+    exit 1
+    ;;
+esac
+
+

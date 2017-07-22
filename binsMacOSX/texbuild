@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+A=$(ls ./ | grep .tex$ )
+
+pdflatex -synctex=1 -interaction=nonstopmode -shell-escape "./"${A} 
+
+EXCODE=$?
+if [ "$EXCODE" == "0" ]; then
+    echo -e "\033[32m [Done] \033[0m"
+    ls ./
+else
+    echo -e "\033[31m [Errors Exist] \033[0m"
+fi
