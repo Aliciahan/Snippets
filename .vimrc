@@ -18,6 +18,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-voom/VOoM'
 Bundle 'luochen1990/rainbow'
 
 " 以下范例用来支持不同格式的插件安装.
