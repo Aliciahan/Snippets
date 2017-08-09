@@ -2,6 +2,46 @@ snippet codeLine "One Line Code"
 \mint{java}|${1:code content}|'
 endsnippet
 
+snippet glossaryentry "New Glossary"
+\newglossaryentry{${1:tag}}
+{  
+	name=${2:name},  
+	description={${3:description}}
+}$0
+endsnippet
+
+snippet acronymentry "New Acronyms" 
+\newacronym{${1:tag}}{${2:name}}{${3:description}}$0
+endsnippet
+
+snippet acrlong "Long Acr"
+\acrlong{$1}$0"
+endsnippet
+
+snippet acrshort "Short Acronyms"
+\acrshort{$1}$0
+endsnippet
+
+snippet acrfull "acr Full"
+\acrfull{$1}$0
+endsnippet
+
+snippet glsCap "Cap glossary"
+\Gls{$1}$0
+endsnippet
+
+snippet glsNormal "Normal Glossary"
+\gls{$1}$0
+endsnippet
+
+snippet glsNormalPl "Plu Normal Gls"
+\glspl{$1}$0
+endsnippet
+
+snippet glsCapPl "Cap plu Gls"
+\Glspl{$1}$0
+endsnippet
+
 snippet codeFromFile "Code read from file"
 \begin{listing}[ht]
 \inputminted{${1:language}}{${2:file name}}
