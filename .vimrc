@@ -19,8 +19,9 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-voom/VOoM'
-Bundle 'luochen1990/rainbow'
-
+Plugin 'vim-syntastic/syntastic'
+Plugin 'luochen1990/rainbow'
+" 
 " 以下范例用来支持不同格式的插件安装.
 " 请将安装插件的命令放在vundle#begin和vundle#end之间.
 " Github上的插件
@@ -178,4 +179,13 @@ let g:tex_flavor='latex'
 "rainbow setting
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
+"Setting for Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
 
