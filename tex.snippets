@@ -1,3 +1,56 @@
+snippet labelChapter "Adding Label For Chapter"
+\label{ch:$1}
+$0
+endsnippet
+
+snippet labelSection "Adding Label For Section"
+\label{sec:$1}
+$0
+endsnippet
+
+snippet labelSubsection "Adding Label For Subsection"
+\label{subsec:$1}
+$0
+endsnippet
+
+snippet labelFig "Adding Label For Figure"
+\label{fig:$1}
+$0
+endsnippet
+
+snippet labelTable "Adding Label For Table"
+\label{tab:$1}
+$0
+endsnippet
+
+snippet labelEquation "Adding Label For Equation"
+\label{eq:$1}
+$0
+endsnippet
+
+snippet labelListing "Adding Label For Code Listing"
+\label{lst:$1}
+$0
+endsnippet
+
+snippet labelItemize "Adding Label Itemize or Enumerated"
+\label{itm:$1}
+$0
+endsnippet
+
+snippet labelAppendix "Adding Label For Appendix Subsection"
+\label{ch:$1}
+$0
+endsnippet
+
+snippet refFigure "Add Figure reference"
+Figure~\ref{$1}$0
+endsnippet
+
+snippet refPage "Add a page Reference"
+Page~\ref{$1}$0
+endsnippet
+
 snippet codeLine "One Line Code"
 \mint{java}|${1:code content}|
 endsnippet
@@ -115,9 +168,10 @@ snippet enumerate "enumerate"
 endsnippet
 
 snippet equation "Equation"
-\begin{equation$1}
+\begin{equation} 
+\label{eq:$1}
 	$0
-\end{equation$1}
+\end{equation}
 endsnippet
 
 snippet figure "Figure"
