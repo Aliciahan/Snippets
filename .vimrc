@@ -42,7 +42,7 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 "以下是我自己的设置
 " ---------------------------------------------------------
 set background=dark
-colorscheme molokai
+"colorscheme molokai
 syntax enable
 set number
 au BufNewFile, BufRead *.handlebras set file type=html
