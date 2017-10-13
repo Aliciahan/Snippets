@@ -21,7 +21,14 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-voom/VOoM'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'luochen1990/rainbow'
-" 
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'tomasr/molokai'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-ruby/vim-ruby'
+
+"
 " 以下范例用来支持不同格式的插件安装.
 " 请将安装插件的命令放在vundle#begin和vundle#end之间.
 " Github上的插件
@@ -41,12 +48,24 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 
 "以下是我自己的设置
 " ---------------------------------------------------------
-set background=dark
-"colorscheme molokai
+"  
+" Switch syntax highlighting on, when the terminal has colors
+syntax on
 syntax enable
+
+
 set number
-au BufNewFile, BufRead *.handlebras set file type=html
+" Set syntax highlighting for specific file types
+au BufNewFile,BufRead BufRead *.handlebras set file type=html
+autocmd BufRead,BufNewFile Appraisals set filetype=ruby
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd Syntax javascript set syntax=jquery
+set background=dark
+colorscheme molokai
+highlight NonText guibg=#060606
+highlight Folded  guibg=#0A0A0A guifg=#9090D0
 set showcmd
+set ruler
 set wildmenu
 set showmatch
 set mouse=a
@@ -63,6 +82,12 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set softtabstop=4
+set list listchars=tab:»·,trail:·
+" Highlight current line
+au WinLeave * set nocursorline nocursorcolumn
+au WinEnter * set cursorline cursorcolumn
+set cursorline cursorcolumn
+
 " 当光标一段时间保持不动了，就禁用高亮
 autocmd cursorhold * set nohlsearch
 " 当输入查找命令时，再启用高亮
@@ -154,8 +179,10 @@ let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 let g:ycm_key_list_accept_completion = ['<C-y>']
 
 " Additional YouCompleteMe config.
+set completeopt=longest,menu
 let g:ycm_complete_in_comments = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_collect_identifiers_from_tag_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 
 " Same as default, but with "markdown" and "text" removed.
