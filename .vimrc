@@ -84,9 +84,9 @@ set expandtab
 set softtabstop=4
 set list listchars=tab:»·,trail:·
 " Highlight current line
-au WinLeave * set nocursorline nocursorcolumn
-au WinEnter * set cursorline cursorcolumn
-set cursorline cursorcolumn
+"au WinLeave * set nocursorline nocursorcolumn
+"au WinEnter * set cursorline cursorcolumn
+"set cursorline cursorcolumn
 
 " 当光标一段时间保持不动了，就禁用高亮
 autocmd cursorhold * set nohlsearch
@@ -128,10 +128,24 @@ nnoremap <F8> :call ToggleSpellLang()<CR> " toggle language
 
 command Spellen set spell spelllang=en
 command Spellfr set spell spelllang=fr
-
+"
+"NERDTREE Configuration 
 " autocmd VimEnter * NERDTree
 " nmap <leader>filetree :NERDTree<CR>
-let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.svn$', '^\.hg$' ] 
+" 
+
+let NERDChristmasTree=0
+let NERDTreeWinSize=35
+let NERDTreeChDirMode=2
+let NERDTreeIgnore=['\~$', '\.swp$', '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.svn$', '^\.hg$' ] 
+let NERDTreeShowBookmarks=1
+let NERDTreeWinPos="left"
+" Automatically open a NERDTree if no files where specified
+autocmd vimenter * if !argc() | NERDTree | endif
+" Close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Open a NERDTree
+nmap <F5> :NERDTreeToggle<cr>
 
 " ------------Ultisnippets
 "
