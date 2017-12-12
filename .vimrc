@@ -27,6 +27,7 @@ Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'pearofducks/ansible-vim'
 
 "
 " 以下范例用来支持不同格式的插件安装.
@@ -235,3 +236,8 @@ let g:syntastic_quiet_messages = { "regex": [
         \ '\mWhitespace before punctation mark in " ."',
         \ '\mmissing `\ `  after "etc."',
         \ ] }
+" Setting for ansible-vim
+" 
+
+au BufRead,BufNewFile */playbooks/*.yml set filetype=ansible
+au BufRead,BufNewFile */playbooks/*.yaml set filetype=ansible
