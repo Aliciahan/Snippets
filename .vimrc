@@ -235,3 +235,5 @@ let g:syntastic_quiet_messages = { "regex": [
         \ '\mWhitespace before punctation mark in " ."',
         \ '\mmissing `\ `  after "etc."',
         \ ] }
+
+autocmd BufRead,BufNewFile *.template setfiletype template

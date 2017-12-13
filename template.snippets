@@ -1,0 +1,12 @@
+snippet ansible_for "For loop for Ansible Template"
+{% for host in groups["etcd"] %} {% endfor %}
+endsnippet
+
+snippet ansible_if "if condition for Ansible Template"
+{% if loop.index != groups['etcd']|length %},{%endif%}
+endsnippet
+
+snippet ansible_get_index "get index with name"
+{{ groups.etcd.index(name) }}
+endsnippet
+
