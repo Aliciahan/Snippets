@@ -1,0 +1,140 @@
+snippet ansible_inventory "Inventory Template Ansible"
+[atlanta]
+host1
+
+[raleigh]
+host2
+
+[southeast:children]
+atlanta
+raleigh
+
+[southeast:vars]
+some_server=foo.southeast.example.com
+
+endsnippet
+
+snippet ansible_shell "Shell Scripts Ansible"
+- name: 
+  shell: 
+  args:
+    chdir: 
+    creates: filename #run when this file doesn't exists
+    executable: /bin/bash # redirection doesn't work in sh
+endsnippet
+
+snippet ansible_script "Run Local Scripts To Machine"
+- name:
+  script: /some/local/create_file.sh --some-arguments 1234
+  args:
+    creates: /the/created/file.txt # when the file doesn't exist
+    removes:  # only if the file is not ye removed
+endsnippet
+
+snippet ansible_copy "copy local file to machine"
+- name:
+  copy:
+    src: /mine/ntp.conf
+    dest: /etc/ntp.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes # creates backup when differences are found
+endsnippet
+
+snippet ansible_fetch "fetch a file from remote to local"
+- name:
+  fetch:
+    src: /tmp/somefile
+    dest: /tmp/prefix-{{ inventory_hostname }}
+    flat: yes
+endsnippet
+
+snippet ansible_file "Set states to file"
+- file:
+    #src: /file/to/link/to
+    #dest: /path/to/symlink
+    path: 
+    owner: foo
+    group: foo
+    mode: 0755
+    state: link/file/touch/directory
+endsnippet
+
+
+snippet ansible_get_url "get from URL"
+- name: Download K8s Server Files
+  get_url:
+    url: "{{ KUBERNETES_SERVER_URL }}"
+    dest: /tmp/k8s/k8s-server.tar.g
+endsnippet
+
+snippet ansible_tar_extract "extract Files from tar.gz"
+- name: Extract K8s Server Files
+  shell: tar -xvf /tmp/k8s/k8s-server.tar.gz -C /tmp/k8s/server/
+endsnippet
+
+snippet ansible_find_copy "find then copy"
+- name: Install Kubernetes master Bins
+  shell: "find /tmp/ -type f -name '{{ item }}' -exec cp -ap {} /usr/bin/{{ item }} \\;"
+  with_items:
+    - kube-apiserver
+  when: "'masters' in group_names"
+endsnippet
+
+snippet ansible_when_group "actions to a group"
+when: "'groupname' in group_names"
+endsnippet
+
+snippet ansible_when_hostname "action to one host"
+when: "inventory_hostname == groups['masters'][0]"
+endsnippet
+
+snippet ansible_delegate_to "delegate task to one host"
+delegate_to: "{{ groups['masters'][0] }}"
+endsnippet
+
+snippet ansible_systemd "start stop restart Services"
+- name: "Start Services"
+  systemd:
+    daemon-reload: yes
+    state: restarted
+    name: "{{ item }}"
+    enabled: yes
+  with_items:
+    - kube-scheduler
+endsnippet
+
+
+snippet ansible_template "copy template to hosts"
+- name: "Copy K8s Cluster csr file"
+  template:
+    src: kubernetes-csr.json.template
+    dest: /opt/k8s/ssl/kubernetes-csr.json
+endsnippet
+
+snippet ansible_synchronize "synchronize files ATTENTION: permis needed"
+- name: "Synchronize  pem files in K8s Masters "
+  synchronize:
+    src=/opt/k8s/ssl/{{ item }}
+    dest=/opt/k8s/ssl/
+  with_items:
+    - admin.pem
+  delegate_to: "{{ groups['masters'][0] 
+endsnippet
+
+
+snippet ansible_give_auth "copy private key DANGEROUS!"
+- name: Give Authentication to Master0
+  copy:
+    src: ~/.ssh/{{ item }}
+    dest: /root/.ssh/{{ item }}
+    mode: 0400
+  with_items:
+    - id_rsa
+    - known_hosts
+  delegate_to: "{{ groups['masters'][0] }}"
+  when: "inventory_hostname == groups['masters'][0]"
+endsnippet
+
+
