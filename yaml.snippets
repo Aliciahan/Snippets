@@ -138,3 +138,17 @@ snippet ansible_give_auth "copy private key DANGEROUS!"
 endsnippet
 
 
+snippet ansible_entry "entry for scripts"
+- name: docker
+  hosts:
+    - slaves
+  gather_facts: no
+  roles:
+    - docker
+endsnippet
+
+
+snippet ansible_deploy "entrypoint for whole project"
+- include: ca.yaml
+- include: etcd.yaml
+endsnippet
