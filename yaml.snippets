@@ -152,3 +152,21 @@ snippet ansible_deploy "entrypoint for whole project"
 - include: ca.yaml
 - include: etcd.yaml
 endsnippet
+
+snippet ansible_group "adding group or verify"
+- name:
+  group:
+    name: somegroup
+    state: present #absent <- in case remove
+endsnippet
+
+snippet ansible_users "ansible users module"
+- name:
+  user:
+    name: username
+    shell: /bin/bash
+    groups: admins,developers
+    append: yes
+    #state: absent
+    #remove: yes
+endsnippet
