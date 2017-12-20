@@ -167,6 +167,101 @@ snippet ansible_users "ansible users module"
     shell: /bin/bash
     groups: admins,developers
     append: yes
+    password: 
+    createhome: yes
     #state: absent
     #remove: yes
+    ssh_key_bits: 2048
+    ssh_key_file: .ssh/id_rsa
+    ssh_key_passphrase: ""
+    ssh_key_type: rsa
 endsnippet
+
+snippet ansible_apt "apt-get install"
+- name: Adds Python MySQL support on Debian/Ubuntu
+  apt: pkg="python-mysqldb" state=present
+  when: ansible_os_family == 'Debian'
+endsnippet
+
+snippet ansible_yum "yum install"
+- name: Adds Python MySQL support on RedHat/CentOS
+  yum: name=MySQL-python state=present
+  when: ansible_os_family == 'RedHat'
+endsnippet
+
+snippet ansible_mysql_user "Ansible MYSQL USER"
+- name: Sets the root password
+  mysql_user:
+    user=root 
+    password="{{ mysql_root_password }}" 
+    host=localhost
+    #state="absent" #for delete
+endsnippet
+
+snippet ansible_htpasswd "Ansible htpasswd"
+- htpasswd:
+  path: /usr/local/nagios/etc/htpasswd.user
+  name:
+  password:
+  #owner:
+  #group:
+  #mode:
+
+endsnippet
+
+snippet ansible_addline "add a line to file"
+# Add a line to a file if it does not exist, without passing regexp
+- lineinfile:
+    path: /tmp/testfile
+    line: '192.168.1.99 foo.lab.net foo'
+endsnippet
+
+snippet ansible_remove_line "delete a line from file"
+- lineinfile:
+    path: /etc/sudoers
+    state: absent
+    regexp: '^%wheel'
+endsnippet
+
+snippet ansible_insert_after_line "insert after one line"
+- lineinfile:
+    path: /etc/httpd/conf/httpd.conf
+    regexp: '^Listen '
+    insertafter: '^#Listen '
+    line: 'Listen 8080'
+endsnippet
+
+
+snippet ansible_file_remove "remove file or directory"
+- name: Clean pub file for root
+  file:
+    path: /root/.ssh/id_rsa.pub
+    state: absent
+
+endsnippet
+
+snippet ansible_ssh_scan "put hosts in to known_hosts"
+- name: Verify known_hosts file exists
+  file:
+    path: ~/.ssh/known_hosts
+    state: touch
+  when: "inventory_hostname == groups['admin-nodes'][0]"
+
+- name: SSH key scan
+  shell: "if [[ `cat ~/.ssh/known_hosts | grep ssh-keyscan {{ item }}` == '' ]]; then  ssh-keyscan {{ item }} >> ~/.ssh/known_hosts; fi"
+  with_items:
+    - "{{ groups['all'] }}"
+  when: "inventory_hostname == groups['admin-nodes'][0]"
+endsnippet
+
+snippet ansible_with_items_group "select a group for looping"
+with_items:
+  - "{{ groups['all'] }}"
+endsnippet
+
+snippet ansible_time_zone "Setup Timezone"
+- name: set timezone to Europe/Paris
+  timezone:
+    name: Europe/Paris
+endsnippet
+
