@@ -5,35 +5,39 @@ snippet hexo_title "The title header"
   tags: 
     - Test
     - another tag
----
 
+---
 endsnippet
 
-snippet noteDefault "For Hexo Blog: Note Default"
+snippet hexo-image "Insert image into hexo theme"
+![title](/uploads/filename)
+endsnippet
+
+snippet hexo-noteDefault "For Hexo Blog: Note Default"
 {% note default %} ${1:Content} {% endnote %} $0
 endsnippet
 
-snippet notePrimary "Hexo Blog: Primary"
+snippet hexo-notePrimary "Hexo Blog: Primary"
 {% note primary %} ${1:Content} {% endnote %} $0
 endsnippet
 
-snippet noteSuccess "Hexo: NoteSuccess"
+snippet hexo-noteSuccess "Hexo: NoteSuccess"
 {% note success %} ${1:Content} {% endnote %} $0
 endsnippet
 
-snippet noteInfo "Hexo: NoteInfo"
+snippet hexo-noteInfo "Hexo: NoteInfo"
 {% note info %} ${1:Content} {% endnote %} $0
 endsnippet 
 
-snippet noteWarning "Hexo: Warning"
+snippet hexo-noteWarning "Hexo: Warning"
 {% note warning %} ${1:Content} {% endnote %} $0
 endsnippet
 
-snippet noteDanger "Hexo: Danger"
+snippet hexo-noteDanger "Hexo: Danger"
 {% note danger %} ${1:Content} {% endnote %} $0
 endsnippet
 
-snippet centerQuote "Hexo: Cneter Quote"
+snippet hexo-centerQuote "Hexo: Cneter Quote"
 <blockquote class="blockquote-center">${1:YourTitle}</blockquote> $0
 endsnippet
 
