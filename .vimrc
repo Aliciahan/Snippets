@@ -2,6 +2,7 @@
 " ----------------------------------------------------
 set nocompatible              " 去除VI一致性,必须
 filetype off                  " 必须
+set encoding=utf-8
 
 " 设置包括vundle和初始化相关的runtime path
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -27,6 +28,10 @@ Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'elzr/vim-json'
+
 
 "
 " 以下范例用来支持不同格式的插件安装.
