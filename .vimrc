@@ -31,6 +31,8 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'elzr/vim-json'
+Plugin 'godlygeek/tabular'
+Plugin 'rojek/vim-puppet'
 
 
 "
