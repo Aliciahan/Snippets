@@ -85,10 +85,10 @@ autocmd FileType js setlocal ts=2 sts=2 sw=2 expandtab
 set ignorecase
 set smartcase
 set smartindent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
-set softtabstop=4
+set softtabstop=2
 set list listchars=tab:»·,trail:·
 " Highlight current line
 "au WinLeave * set nocursorline nocursorcolumn
