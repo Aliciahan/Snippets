@@ -2,6 +2,12 @@ snippet datetimesh "echo Date Time"
 $(date +"%Y-%m-%d %H:%M:%S")
 endsnippet
 
+snippet read-lines "read line by line from file"
+while IFS='' read -r line || [[ -n "$line" ]]; do
+	$line
+done < $filename
+endsnippet
+
 snippet case "case"
 case ${1:word} in
 	${2:pattern})
@@ -228,6 +234,10 @@ endsnippet
 
 snippet awkExcluLast "get all except last col"
 'awk -F/ '{for(i=1;i<NF;i++)printf("%s/",$i)}\''
+endsnippet
+
+snippet awkIf "awk if expression"
+awk '{if() print $1}'
 endsnippet
 
 snippet pressToContinue "Press To Continue"
