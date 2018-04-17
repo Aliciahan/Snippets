@@ -30,9 +30,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'elzr/vim-json'
 Plugin 'godlygeek/tabular'
-Plugin 'rojek/vim-puppet'
 
 
 "
@@ -82,6 +80,7 @@ set hlsearch
 set backspace=2
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType js setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType erb setlocal ts=2 sts=2 sw=2 expandtab
 set ignorecase
 set smartcase
 set smartindent
