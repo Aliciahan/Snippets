@@ -24,6 +24,7 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'luochen1990/rainbow'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'tomasr/molokai'
+Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
@@ -247,3 +248,10 @@ let g:syntastic_quiet_messages = { "regex": [
 
 autocmd BufRead,BufNewFile *.template setfiletype template
 set timeoutlen=1000 ttimeoutlen=0
+if has("clipboard")
+  set clipboard=unnamed " copy to the system clipboard
+
+  if has("unnamedplus") " X11 support
+    set clipboard+=unnamedplus
+  endif
+endif
