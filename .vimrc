@@ -16,7 +16,6 @@ Plugin 'vim-scripts/The-NERD-tree'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'townk/vim-autoclose'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized'
@@ -32,6 +31,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'godlygeek/tabular'
+Plugin 'fatih/vim-go'
 
 
 "
@@ -65,6 +65,7 @@ set number
 au BufNewFile,BufRead BufRead *.handlebras set file type=html
 autocmd BufRead,BufNewFile Appraisals set filetype=ruby
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.go set filetype=go
 autocmd Syntax javascript set syntax=jquery
 set background=dark
 colorscheme molokai
@@ -82,6 +83,7 @@ set backspace=2
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType js setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType erb setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType go setlocal ts=2 sts=2 sw=2 expandtab
 set ignorecase
 set smartcase
 set smartindent
@@ -121,6 +123,7 @@ autocmd Bufenter *.txt set spell spelllang=en
 autocmd Bufenter *.tex set spell spelllang=en
 autocmd Bufenter *.md set spell spelllang=en
 autocmd Bufenter *.markdown set spell spelllang=en
+
 " spell checking
 function! ToggleSpellLang()
 	" toggle between en and fr
@@ -244,3 +247,4 @@ let g:syntastic_quiet_messages = { "regex": [
         \ ] }
 
 autocmd BufRead,BufNewFile *.template setfiletype template
+set timeoutlen=1000 ttimeoutlen=0
