@@ -4,6 +4,8 @@ set nocompatible              " 去除VI一致性,必须
 filetype off                  " 必须
 set encoding=utf-8
 
+color dracula
+
 " 设置包括vundle和初始化相关的runtime path
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -32,6 +34,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'godlygeek/tabular'
 Plugin 'fatih/vim-go'
+Plugin 'dracula/vim'
 
 
 "
