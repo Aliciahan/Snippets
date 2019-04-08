@@ -35,6 +35,8 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'godlygeek/tabular'
 Plugin 'fatih/vim-go'
 Plugin 'dracula/vim'
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
 
 
 "
