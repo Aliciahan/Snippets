@@ -33,7 +33,6 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'godlygeek/tabular'
-Plugin 'fatih/vim-go'
 Plugin 'dracula/vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
 
@@ -142,6 +141,7 @@ nnoremap <F8> :call ToggleSpellLang()<CR> " toggle language
 
 command Spellen set spell spelllang=en
 command Spellfr set spell spelllang=fr
+
 "
 "NERDTREE Configuration 
 " autocmd VimEnter * NERDTree
@@ -259,3 +259,7 @@ if has("clipboard")
     set clipboard+=unnamedplus
   endif
 endif
+
+let g:used_javascript_libs = 'vue,angularjs'
+autocmd BufReadPre *.js let b:javascript_lib_use_vue = 1
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
