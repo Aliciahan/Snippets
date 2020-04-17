@@ -31,12 +31,12 @@ Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'rodjek/vim-puppet'
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'godlygeek/tabular'
 Plugin 'dracula/vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'hashivim/vim-terraform'
 
 
 "
@@ -267,7 +267,7 @@ autocmd BufReadPre *.js let b:javascript_lib_use_vue = 1
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 
 "taglist配置信息
-let Tlist_Auto_Open=1 " Let the tag list open automatically
+let Tlist_Auto_Open=0 " Let the tag list open automatically
 let Tlist_Auto_Update=1 " Update the tag list automatically
 let Tlist_Compact_Format=1 " Hide help menu
 let Tlist_Ctags_Cmd='ctags' " Location of ctags
