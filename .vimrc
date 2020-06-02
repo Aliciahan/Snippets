@@ -15,6 +15,7 @@ call vundle#begin()
 " 让vundle管理插件版本,必须
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-scripts/The-NERD-tree'
+Plugin 'vim-scripts/taglist.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -33,10 +34,9 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'godlygeek/tabular'
-Plugin 'fatih/vim-go'
 Plugin 'dracula/vim'
-Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'hashivim/vim-terraform'
 
 
 "
@@ -143,6 +143,7 @@ nnoremap <F8> :call ToggleSpellLang()<CR> " toggle language
 
 command Spellen set spell spelllang=en
 command Spellfr set spell spelllang=fr
+
 "
 "NERDTREE Configuration 
 " autocmd VimEnter * NERDTree
@@ -260,3 +261,23 @@ if has("clipboard")
     set clipboard+=unnamedplus
   endif
 endif
+
+let g:used_javascript_libs = 'vue,angularjs'
+autocmd BufReadPre *.js let b:javascript_lib_use_vue = 1
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+
+"taglist配置信息
+let Tlist_Auto_Open=0 " Let the tag list open automatically
+let Tlist_Auto_Update=1 " Update the tag list automatically
+let Tlist_Compact_Format=1 " Hide help menu
+let Tlist_Ctags_Cmd='ctags' " Location of ctags
+let Tlist_Enable_Fold_Column=0 "do show folding tree
+let Tlist_Process_File_Always=1 " Always process the source file
+let Tlist_Show_One_File=1 " Only show the tag list of current file
+let Tlist_Exist_OnlyWindow=1 " If you are the last, kill yourself
+let Tlist_File_Fold_Auto_Close=0 " Fold closed other trees
+let Tlist_Sort_Type="name" " Order by name
+let Tlist_WinWidth=30 " Set the window 40 cols wide.
+let Tlist_Close_On_Select=1 " Close the list when a item is selected
+let Tlist_Use_SingleClick=1 "Go To Target By SingleClick
+let Tlist_Use_Right_Window=1 "在右侧显示
