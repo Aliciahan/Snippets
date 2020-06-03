@@ -11,6 +11,6 @@ docker run -v $(pwd):/root/.vim/UltiSnips --rm -it centos:8 bash  -c "\
   cd /root/.vim/bundle/YouCompleteMe &&\
   ./install.py &&\
   cd /root/.vim &&\
-  tar -zcvf bundle-centos.tgz /root/.vim/bundle &&\
+  tar -zcvf bundle-centos.tgz bundle &&\
   mv ./bundle-centos.tgz /root/.vim/UltiSnips/
 "
