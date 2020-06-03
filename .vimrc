@@ -8,35 +8,35 @@ silent! color dracula
 
 " 设置包括vundle和初始化相关的runtime path
 set rtp+=~/.vim/bundle/Vundle.vim
-silent! call vundle#begin()
+call vundle#begin()
 " 另一种选择, 指定一个vundle安装插件的路径
 "call vundle#begin('~/some/path/here')
 
 " 让vundle管理插件版本,必须
-silent! Plugin 'VundleVim/Vundle.vim'
-silent! Plugin 'vim-scripts/The-NERD-tree'
-silent! Plugin 'vim-scripts/taglist.vim'
-silent! Plugin 'Valloric/YouCompleteMe'
-silent! Plugin 'SirVer/ultisnips'
-silent! Plugin 'honza/vim-snippets'
-silent! Plugin 'kien/ctrlp.vim'
-silent! Plugin 'mileszs/ack.vim'
-silent! Plugin 'altercation/vim-colors-solarized'
-silent! Plugin 'vim-voom/VOoM'
-silent! Plugin 'vim-syntastic/syntastic'
-silent! Plugin 'luochen1990/rainbow'
-silent! Plugin 'ekalinin/Dockerfile.vim'
-silent! Plugin 'tomasr/molokai'
-silent! Plugin 'tpope/vim-endwise'
-silent! Plugin 'tpope/vim-rails'
-silent! Plugin 'tpope/vim-surround'
-silent! Plugin 'vim-ruby/vim-ruby'
-silent! Plugin 'pangloss/vim-javascript'
-silent! Plugin 'kchmck/vim-coffee-script'
-silent! Plugin 'godlygeek/tabular'
-silent! Plugin 'dracula/vim'
-silent! Plugin 'othree/javascript-libraries-syntax.vim'
-silent! Plugin 'hashivim/vim-terraform'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-scripts/The-NERD-tree'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-voom/VOoM'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'luochen1990/rainbow'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'tomasr/molokai'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'godlygeek/tabular'
+Plugin 'dracula/vim'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'hashivim/vim-terraform'
 
 
 "
