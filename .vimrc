@@ -37,6 +37,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'dracula/vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'hashivim/vim-terraform'
+Plugin 'rodjek/vim-puppet'
 
 
 "
