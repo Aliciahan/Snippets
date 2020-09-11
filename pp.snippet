@@ -1,0 +1,41 @@
+$ cat pp.snippets
+snippet file_template "File with Template"
+file {"/etc/default/jenkins":
+  mode    => '0644',
+  owner   => 'root',
+  group   => 'root',
+  content => alternative_template("s2m_jenkins", "etc.default.jenkins.erb"),
+  require => Class['disk_tools::format_mount_disk'],
+  notify  => Exec['jenkins-restart'],
+}
+endsnippet
+
+snippet exec_onlyif "exec only file not exist"
+Exec {'install-jenkins-key':
+  path        => ['/usr/bin','/usr/sbin'],
+  command     => 'wget -qO - https://pkg.jenkins.io/debian-stable/jenkins.io.key | apt-key add - && touch /etc/repo_jenkins',
+  onlyif      => "test ! -f /etc/repo_jenkins",
+}
+endsnippet
+
+snippet apt_repo_setup "setup repo apt"
+apt::pin {'pkg_jenkins_io':
+  originator => 'pkg.jenkins.io',
+  priority   => 500,
+}
+->  apt::source { 'pkg.jenkins.io':
+  location => 'https://pkg.jenkins.io/debian-stable/',
+  release  => 'binary/',
+  repos    => '',
+  key      => {
+    'id'     => '150FDE3F7787E7D11EF4E12A9B7D32F2D50582E6',
+    'source' => 'https://pkg.jenkins.io/debian/jenkins-ci-org.key',
+  },
+  include  => {
+    'src' => false,
+  },
+}
+
+Apt::Source['pkg.jenkins.io']->Package<|tag == 'jenkins'|>
+Class['Apt::Update'] -> Package<|tag == 'jenkins'|>
+endsnippet
